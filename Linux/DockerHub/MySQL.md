@@ -47,3 +47,6 @@ HERE
 * mysql -uroot -pmy-secret-pw  
 6. 修改mysql密码认证
 * alter user 'root'@'%' identified with mysql_native_password by 'my-secret-pw';
+
+## create database
+* CREATE DATABASE IF NOT EXISTS iabas DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
