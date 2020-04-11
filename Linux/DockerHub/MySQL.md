@@ -38,7 +38,7 @@ HERE
 1. docker stop $MYSQL_CONTAINER
 2. docker rm $MYSQL_CONTAINER
 3. docker run
-* docker run --name $MYSQL_CONTAINER -v $PROJECT/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d $NEW_MYSQL_IMAGE:$VERSION
+* docker run --name $MYSQL_CONTAINER -p 3306:3306 -v $PROJECT/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d $NEW_MYSQL_IMAGE:$VERSION
 4. 查看mysql在容器中的IP  
 * docker ps  
 * docker inspect $MYSQL_CONTAINER | grep IPAddress  
@@ -47,6 +47,5 @@ HERE
 * mysql -uroot -pmy-secret-pw  
 6. 修改mysql密码认证
 * alter user 'root'@'%' identified with mysql_native_password by 'my-secret-pw';
-
-## create database
+7. create database in docker
 * CREATE DATABASE IF NOT EXISTS iabas DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
