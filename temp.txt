@@ -1,0 +1,14 @@
+blacklist
+
+  ip       block_time         unblock_time           times    unblocked
+
+if unblock_time>30d:
+  times -=int(unblock_time /1month)
+if times <0:
+  times = 0
+times +=1
+next_unblock_interval = timedelta(hours=2^^(2*times-1)) if time <= 5 else timedelta(month=1)
+
+===========================
+
+
