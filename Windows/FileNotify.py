@@ -1,22 +1,22 @@
-import os
-import sys
+# https://win32com.goermezer.de/microsoft/windows/pathwatcher-py-keeps-an-eye-on-any-changes-in-any-directory.html
+import os, sys
 
 import win32file
 import win32con
 
 ACTIONS = {
-  1: "Created",
-  2: "Deleted",
-  3: "Updated",
-  4: "Renamed from something",
-  5: "Renamed to something"
+  1 : "Created",
+  2 : "Deleted",
+  3 : "Updated",
+  4 : "Renamed from something",
+  5 : "Renamed to something"
 }
 
 FILE_LIST_DIRECTORY = 0x0001
 
-path_to_watch = 'E:/test'
+path_to_watch = sys.argv[1]
 print 'Watching changes in', path_to_watch
-hDir = win32file.CreateFile(
+hDir = win32file.CreateFile (
   path_to_watch,
   FILE_LIST_DIRECTORY,
   win32con.FILE_SHARE_READ | win32con.FILE_SHARE_WRITE,
@@ -27,18 +27,19 @@ hDir = win32file.CreateFile(
 )
 while 1:
 
-    results = win32file.ReadDirectoryChangesW(
-        hDir,
-        1024,
-        True,
-        win32con.FILE_NOTIFY_CHANGE_FILE_NAME |
-        win32con.FILE_NOTIFY_CHANGE_DIR_NAME |
-        win32con.FILE_NOTIFY_CHANGE_ATTRIBUTES |
-        win32con.FILE_NOTIFY_CHANGE_SIZE |
-        win32con.FILE_NOTIFY_CHANGE_LAST_WRITE |
-        win32con.FILE_NOTIFY_CHANGE_SECURITY,
-        None,
-        None)
-    for action, filename in results:
-        full_filename = os.path.join(path_to_watch, filename)
-        print full_filename, ACTIONS.get(action, "Unknown")
+  results = win32file.ReadDirectoryChangesW (
+    hDir,
+    1024,
+    True,
+    win32con.FILE_NOTIFY_CHANGE_FILE_NAME |
+     win32con.FILE_NOTIFY_CHANGE_DIR_NAME |
+     win32con.FILE_NOTIFY_CHANGE_ATTRIBUTES |
+     win32con.FILE_NOTIFY_CHANGE_SIZE |
+     win32con.FILE_NOTIFY_CHANGE_LAST_WRITE |
+     win32con.FILE_NOTIFY_CHANGE_SECURITY,
+    None,
+    None
+  )
+  for action, file in results:
+    full_filename = os.path.join (path_to_watch, file)
+    print full_filename, ACTIONS.get (action, "Unknown")
