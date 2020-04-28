@@ -22,9 +22,9 @@ openssl rsa -pubout -in rsa_1024_pri.pem -out rsa_1024_pub.pem
     'DIRS': [os.path.join(BASE_DIR, 'static')], 'DIRS': [os.path.join(BASE_DIR, 'static')],
 #...
 STATICFILES_DIRS = [os.path.join(BASE_DIR,"static"),]
-with open('rsa_1024.pri.pem') as f:
+with open('rsa_1024_pri.pem') as f:
     RSA_PRIVATE_KEY = ''.join(f.readlines())
-with open('rsa_1024.pub.pem') as f:
+with open('rsa_1024_pub.pem') as f:
     RSA_PUBLIC_KEY = ''.join(f.readlines())
 ```
 
@@ -89,16 +89,8 @@ urlpatterns = [
 ]
 ```
 
-## create api/views.py
+## edit api/views.py
 ```python
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
-from django.shortcuts import render
-
-# Create your views here.
-
-
 from django.http import HttpResponseNotFound, HttpResponse
 from Crypto import Random
 from Crypto.PublicKey import RSA
