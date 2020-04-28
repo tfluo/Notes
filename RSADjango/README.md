@@ -1,4 +1,4 @@
-# RSA with Django
+# RSA encrypt & decrypt in Django
 ## start django project
 ```sh
 django-admin startproject cryptodemo
@@ -97,7 +97,6 @@ from Crypto.PublicKey import RSA
 from Crypto.Cipher import PKCS1_v1_5
 from django.conf import settings
 import base64
-from django.views.decorators.csrf import csrf_exempt
 
 def crypto(request):
     values = {}
@@ -113,7 +112,6 @@ def crypto(request):
     else:
         return HttpResponseNotFound('')
 
-@csrf_exempt
 def get_pass(request):
     random_gen = Random.new().read
     RSA.generate(1024, random_gen)
