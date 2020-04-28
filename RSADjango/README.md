@@ -39,7 +39,7 @@ with open('rsa_1024_pub.pem') as f:
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <title>Login</title>
+        <title>Crypto</title>
         <!-- #引入加密的js包 -->
         <script src="/static/jsencrypt.min.js"></script>
         <!-- #引入必要的jquery包 -->
