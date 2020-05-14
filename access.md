@@ -1,0 +1,2 @@
+pattern = r'(?<clientip>(?:(?:25[0-5]|2[0-4]\d|(?:1\d{2}|[1-9]?\d))\.){3}(?:25[0-5]|2[0-4]\d|(?:1\d{2}|[1-9]?\d))|::1) (?<ident>[a-zA-Z0-9._-]+) (?<auth>([a-zA-Z0-9._-]+)|"") \[(?<timestamp_msg>.*?)\]( (\d+))? "(?<verb>\b\w+\b) (?<request>\S+) HTTP/(?<httpversion>[0-9.]+?)" (?<response>[0-9]+) (?<bytes>[0-9,-]+)(( "(?<referrer>.*?)" )|( "(?<referrer>.*?)"$))?("(?<agent>.*?)" )?("(?<XFF>.*?)")?'
+regex.match(pattern, line.strip())
