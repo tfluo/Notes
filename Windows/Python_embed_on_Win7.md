@@ -14,4 +14,6 @@
     6. 安装future-0.18.2：python setup.py install
     7. 安装pyinstaller：pip install pyinstaller
     8. 打包：pyinstaller -F xxx.py --clean，可执行文件在 dist 目录下
-7. 其他待补充...`
+7. DelphiVCL和打包：
+    1. pyinstaller 加参数 --add-data full_path_to_DelphiVCL.pyd;delphivcl\Win64_or_Win32
+8. 其他待补充...`
